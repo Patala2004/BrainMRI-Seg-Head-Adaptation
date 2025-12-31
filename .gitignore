@@ -1,0 +1,6 @@
+venv
+venv*
+Datasets*
+pattern_hw*
+*__pycache__*
+saved_models*

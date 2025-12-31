@@ -1,0 +1,262 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage[noadjust]{cite}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Lightweight Transfer Learning for Segmentation Head Adaptation in Multi-Class Brain Tumor Classification Models\\}
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Christian Most Tazon}
+\IEEEauthorblockA{\textit{Escuela Técnica Superior de Ingeniería Informática} \\
+\textit{Universidad Politécnica de Madrid}\\
+Madrid, Spain \\
+christian.most@alumnos.upm.es}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Pablo Macías Bradshaw}
+\IEEEauthorblockA{\textit{Escuela Técnica Superior de Ingeniería de Sistemas Informáticos} \\
+\textit{Universidad Politécnica de Madrid}\\
+Madrid, Spain \\
+pablo.macias@alumnos.upm.es}
+\and
+\IEEEauthorblockN{3\textsuperscript{rd} Sofía Canogar Liao}
+\IEEEauthorblockA{\textit{Escuela Técnica Superior de Ingeniería de Sistemas Informáticos} \\
+\textit{Universidad Politécnica de Madrid}\\
+Madrid, Spain \\
+sofia.canogar@alumnos.upm.es}
+}
+
+\maketitle
+
+\begin{abstract}
+Most diagnosed brain tumors can be classified into gliomas, pituitary tumors, or meningiomas with gliomas accounting for 75\% of malignant brain tumors in adults. It is often challenging to make an accurate diagnosis due to the brain's complex structure, limited accessibility to precise medical imaging tools, and the similarities between different kinds of tumors. 
+Artificial Intelligence (AI) and deep learning models can aid diagnosis, particularly in low-resource settings where medical professionals can be lacking, by achieving clinical-level accuracy comparable to neuroradiologists. However, training of new AI tools can be expensive and not feasible in these low resource environments.
+In this work, we develop a lightweight deep learning model using a pre-trained version of ResNet-18 to classify MRI scans of glioma, meningioma and pituitary tumors, or no tumor. We extend the model with a task-specific segmentation head, training only the new head from scratch while preserving the pretrained classification capabilities. The classification model reached 99.47\% classification accuracy. Despite being trained on rough tumor masks, the modified model achieved a Dice score of 0.78 while preserving its classification accuracy. This performance was obtained after only 25 training epochs, using patch-based training followed by whole-image fine-tuning, with the updates restricted to the newly added segmentation head. Error analysis shows higher segmentation errors in meningioma and glioma than in pituitary tumors. 
+Our findings show that existing AI tools can be effectively extended with new functionalities by attaching and training new lightweight task-specific heads without needing to retrain the whole model or degrading its existing capabilities. The resulting fast convergence makes this approach suitable for low resource environments where training new large models from scratch is not feasible.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Brain Tumor, MRI classification, Deep Learning, Segmentation, Low-resource learning, Artificial Intelligence
+\end{IEEEkeywords}
+
+\section{Introduction}
+Brain tumors are the most common type of solid tumors diagnosed in adolescents and children, with more than 88000 adults and 5500 children diagnosed yearly in the United States alone. These tumors are associated with a high mortality rate; the relative survival rate 5 years after a malignant is only 35.6\% in adults. Notably, gliomas, a kind of aggressive and often malignant brain tumors, accounts for 75\% of malignant tumor diagnosis and causes more than 10000 deaths every year in the US\cite{Dor2025Are}\cite{Khalighi2024}. This highlights the current shortcomings in treating brain tumors and the importance of an accurate and early diagnosis to guide treatment and improve patient outcomes. Around 80\% of brain tumors can be classified into three major types: meningiomas, pituitary tumors, and the aforementioned gliomas\cite{Qui2021CBT}. Magnetic Resonance imaging (MRI) is the preferred tool to diagnose brain tumors\cite{Ben2015Con}, with standard imaging protocols demonstrating a high diagnostic accuracy \cite{YAN2016109}. However, despite the advantages of MRI, definitive diagnosis remains challenging due to the brain's complex anatomy, limited access to high quality imaging and overlapping characteristics of different tumor types\cite{Khalighi2024}\cite{Gorenshtein2025}.
+
+
+Brain tumor diagnosis and classification using deep convolutional neural networks has emerged as a powerful tool to do automatic diagnosis or support neuroradiologists, with segmentation models proven to help neuroradiologists improve their diagnostic accuracy by 12.0 percentage points\cite{Gao2022}. Automated brain tumor segmentation models can learn complex spatial features directly from MRI data, largely replacing older handcrafted methods and achieving state of the art results, effectively handling intricate tumor structures that were challenging using traditional approaches\cite{In2016}. Transfer learning, where models are pre-trained on large-scales datasets such as ImageNet before being adapted to medical imaging tasks, has proven highly effective\cite{Valverde2021}. Building upon the original U-Net architecture, advances such as Attention U-Net incorporate attention gates to refine the delineation of tumor boundaries, further enhancing performance, reaching a Dice score of 0.807 on the BraTS 2020 dataset, though at the cost of increased computational demands\cite{Aslam2025}. Despite advances, segmentation remains a resource intensive task, as training can require substantial computational power, specialized hardware, and optimization strategies to achieve practical runtimes\cite{Xiong2021}.
+
+
+In contrast, deep learning classification models have been widely adopted in medical imaging\cite{Zhou2021}, with lightweight classification models being feasible even in low resource environments\cite{Gorenshtein2025}. Lightweight architectures, such as MobileNet or EfficientNet, provide high accuracy while requiring limited computational resources\cite{Tan2019EfficientNet}\cite{Howa2017}, highlighting a practical gap between feasible classification tools and resource-heavy segmentation models.
+
+
+Fine-tuning new models by freezing early layers and only training the remaining layers on target allows a model to adapt learned features to a new task without learning from scratch. Such approaches reduce the computational complexity of deep neural network training, proving to be particularly advantageous for medical imaging tasks in low resource environments\cite{Ayana2024}. In the context of segmentation, models that use a pre-trained encoder backbone to train a decoder have been shown to achieve superior performance compared to models trained entirely from scratch\cite{Khorasani2025}.
+
+
+To address the computational challenge associated with training deep convolutional networks, this paper explores an alternative approach: extending existing trained models with new task-specific heads rather than training entirely new models from scratch. Specifically, we investigate the development of segmentation models, which typically is a resource-intensive task, by expanding more widely available lightweight classification models. By using transfer learning and taking advantage of the learned semantic information in already available classification models, this approach aims to reduce the computational burden of training new segmentation tools, enabling their deployement in low-resource settings where training the state-of-the-art architectures from scratch may not be a feasible solution. Hola
+
+
+The main contributions of this paper are:
+\begin{itemize}
+  \item \textbf{A task-specific head transfer learning strategy.}
+  
+  We propose a computationally efficient framework that extends lightweight classification models with a task-specific segmentation head, enabling segmentation capabilities without retraining the full network.
+  \item \textbf{Preservation of existing model capabilities.}
+  
+  The proposed approach adds a segmentation functionality while keeping the pretrained classification backbone frozen, retaining its previously learned classification performance.
+  \item \textbf{Efficient training for resource-constrained settings.}
+  
+  By restricting training to the newly added segmentation head, the proposed method significantly reduces training costs and increases convergence speed compared to training models from scratch, making it suitable for low-resource environments.
+  \item \textbf{Practical validation on brain tumor MRI segmentation.}
+  
+  We domonstrate the effectiveness of the proposed framework on real brain tumor MRI data, showing that a competitive segmentation performance can be achieved even when using rough tumor annotations and limited training epochs by using the proposed framework.
+\end{itemize}
+
+
+
+\section{Datasets}
+
+\subsection{Classification Datasets}
+
+For the developement of the classification model used for the baseline of this study, a public Dataset of 7023 brain MRI images was used\cite{Mso2021Kagg}. This dataset was used by Gorenshtein et. al in \cite{Gorenshtein2025} fot the generation on classification models in a way that is going to be used as the baseline of this project. The Dataset was created by merging three smaller datasets. In total, this dataset contains 1621 glioma tumor images, 1645 meningioma tumor images, 1757 images for pituitary tumors and 2000 non-tumor MRI images. The goal for the baseline is to develop a classification model capable of capturing tumor-indicative patterns for accurate automated detection and diagnosis, while learning representations that can be later used for segmentation. The dataset includes scans spanning a wide range of types, presentations and origins, supporting the models generalizability and aplicability across diverse clinical settings.
+
+\section{Prepare Your Paper Before Styling}
+Before you begin to format your paper, first write and save the content as a 
+separate text file. Complete all content and organizational editing before 
+formatting. Please note sections \ref{AA}--\ref{SCM} below for more information on 
+proofreading, spelling and grammar.
+
+Keep your text and graphic files separate until after the text has been 
+formatted and styled. Do not number text heads---{\LaTeX} will do that 
+for you.
+
+\subsection{Abbreviations and Acronyms}\label{AA}
+Define abbreviations and acronyms the first time they are used in the text, 
+even after they have been defined in the abstract. Abbreviations such as 
+IEEE, SI, MKS, CGS, ac, dc, and rms do not have to be defined. Do not use 
+abbreviations in the title or heads unless they are unavoidable.
+
+\subsection{Units}
+\begin{itemize}
+\item Use either SI (MKS) or CGS as primary units. (SI units are encouraged.) English units may be used as secondary units (in parentheses). An exception would be the use of English units as identifiers in trade, such as ``3.5-inch disk drive''.
+\item Avoid combining SI and CGS units, such as current in amperes and magnetic field in oersteds. This often leads to confusion because equations do not balance dimensionally. If you must use mixed units, clearly state the units for each quantity that you use in an equation.
+\item Do not mix complete spellings and abbreviations of units: ``Wb/m\textsuperscript{2}'' or ``webers per square meter'', not ``webers/m\textsuperscript{2}''. Spell out units when they appear in text: ``. . . a few henries'', not ``. . . a few H''.
+\item Use a zero before decimal points: ``0.25'', not ``.25''. Use ``cm\textsuperscript{3}'', not ``cc''.)
+\end{itemize}
+
+\subsection{Equations}
+Number equations consecutively. To make your 
+equations more compact, you may use the solidus (~/~), the exp function, or 
+appropriate exponents. Italicize Roman symbols for quantities and variables, 
+but not Greek symbols. Use a long dash rather than a hyphen for a minus 
+sign. Punctuate equations with commas or periods when they are part of a 
+sentence, as in:
+\begin{equation}
+a+b=\gamma\label{eq}
+\end{equation}
+
+Be sure that the 
+symbols in your equation have been defined before or immediately following 
+the equation. Use ``\eqref{eq}'', not ``Eq.~\eqref{eq}'' or ``equation \eqref{eq}'', except at 
+the beginning of a sentence: ``Equation \eqref{eq} is . . .''
+
+\subsection{\LaTeX-Specific Advice}
+
+Please use ``soft'' (e.g., \verb|\eqref{Eq}|) cross references instead
+of ``hard'' references (e.g., \verb|(1)|). That will make it possible
+to combine sections, add equations, or change the order of figures or
+citations without having to go through the file line by line.
+
+Please don't use the \verb|{eqnarray}| equation environment. Use
+\verb|{align}| or \verb|{IEEEeqnarray}| instead. The \verb|{eqnarray}|
+environment leaves unsightly spaces around relation symbols.
+
+Please note that the \verb|{subequations}| environment in {\LaTeX}
+will increment the main equation counter even when there are no
+equation numbers displayed. If you forget that, you might write an
+article in which the equation numbers skip from (17) to (20), causing
+the copy editors to wonder if you've discovered a new method of
+counting.
+
+{\BibTeX} does not work by magic. It doesn't get the bibliographic
+data from thin air but from .bib files. If you use {\BibTeX} to produce a
+bibliography you must send the .bib files. 
+
+{\LaTeX} can't read your mind. If you assign the same label to a
+subsubsection and a table, you might find that Table I has been cross
+referenced as Table IV-B3. 
+
+{\LaTeX} does not have precognitive abilities. If you put a
+\verb|\label| command before the command that updates the counter it's
+supposed to be using, the label will pick up the last counter to be
+cross referenced instead. In particular, a \verb|\label| command
+should not go before the caption of a figure or a table.
+
+Do not use \verb|\nonumber| inside the \verb|{array}| environment. It
+will not stop equation numbers inside \verb|{array}| (there won't be
+any anyway) and it might stop a wanted equation number in the
+surrounding equation.
+
+\subsection{Some Common Mistakes}\label{SCM}
+\begin{itemize}
+\item The word ``data'' is plural, not singular.
+\item The subscript for the permeability of vacuum $\mu_{0}$, and other common scientific constants, is zero with subscript formatting, not a lowercase letter ``o''.
+\item In American English, commas, semicolons, periods, question and exclamation marks are located within quotation marks only when a complete thought or name is cited, such as a title or full quotation. When quotation marks are used, instead of a bold or italic typeface, to highlight a word or phrase, punctuation should appear outside of the quotation marks. A parenthetical phrase or statement at the end of a sentence is punctuated outside of the closing parenthesis (like this). (A parenthetical sentence is punctuated within the parentheses.)
+\item A graph within a graph is an ``inset'', not an ``insert''. The word alternatively is preferred to the word ``alternately'' (unless you really mean something that alternates).
+\item Do not use the word ``essentially'' to mean ``approximately'' or ``effectively''.
+\item In your paper title, if the words ``that uses'' can accurately replace the word ``using'', capitalize the ``u''; if not, keep using lower-cased.
+\item Be aware of the different meanings of the homophones ``affect'' and ``effect'', ``complement'' and ``compliment'', ``discreet'' and ``discrete'', ``principal'' and ``principle''.
+\item Do not confuse ``imply'' and ``infer''.
+\item The prefix ``non'' is not a word; it should be joined to the word it modifies, usually without a hyphen.
+\item There is no period after the ``et'' in the Latin abbreviation ``et al.''.
+\item The abbreviation ``i.e.'' means ``that is'', and the abbreviation ``e.g.'' means ``for example''.
+\end{itemize}
+
+\subsection{Authors and Affiliations}
+\textbf{The class file is designed for, but not limited to, six authors.} A 
+minimum of one author is required for all conference articles. Author names 
+should be listed starting from left to right and then moving down to the 
+next line. This is the author sequence that will be used in future citations 
+and by indexing services. Names should not be listed in columns nor group by 
+affiliation. Please keep your affiliations as succinct as possible (for 
+example, do not differentiate among departments of the same organization).
+
+\subsection{Identify the Headings}
+Headings, or heads, are organizational devices that guide the reader through 
+your paper. There are two types: component heads and text heads.
+
+Component heads identify the different components of your paper and are not 
+topically subordinate to each other. Examples include Acknowledgments and 
+References and, for these, the correct style to use is ``Heading 5''. Use 
+``figure caption'' for your Figure captions, and ``table head'' for your 
+table title. Run-in heads, such as ``Abstract'', will require you to apply a 
+style (in this case, italic) in addition to the style provided by the drop 
+down menu to differentiate the head from the text.
+
+Text heads organize the topics on a relational, hierarchical basis. For 
+example, the paper title is the primary text head because all subsequent 
+material relates and elaborates on this one topic. If there are two or more 
+sub-topics, the next level head (uppercase Roman numerals) should be used 
+and, conversely, if there are not at least two sub-topics, then no subheads 
+should be introduced.
+
+\subsection{Figures and Tables}
+\paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
+bottom of columns. Avoid placing them in the middle of columns. Large 
+figures and tables may span across both columns. Figure captions should be 
+below the figures; table heads should appear above the tables. Insert 
+figures and tables after they are cited in the text. Use the abbreviation 
+``Fig.~\ref{fig}'', even at the beginning of a sentence.
+
+\begin{table}[htbp]
+\caption{Table Type Styles}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Table}&\multicolumn{3}{|c|}{\textbf{Table Column Head}} \\
+\cline{2-4} 
+\textbf{Head} & \textbf{\textit{Table column subhead}}& \textbf{\textit{Subhead}}& \textbf{\textit{Subhead}} \\
+\hline
+copy& More table copy$^{\mathrm{a}}$& &  \\
+\hline
+\multicolumn{4}{l}{$^{\mathrm{a}}$Sample of a Table footnote.}
+\end{tabular}
+\label{tab1}
+\end{center}
+\end{table}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics{fig1.png}}
+\caption{Example of a figure caption.}
+\label{fig}
+\end{figure}
+
+Figure Labels: Use 8 point Times New Roman for Figure labels. Use words 
+rather than symbols or abbreviations when writing Figure axis labels to 
+avoid confusing the reader. As an example, write the quantity 
+``Magnetization'', or ``Magnetization, M'', not just ``M''. If including 
+units in the label, present them within parentheses. Do not label axes only 
+with units. In the example, write ``Magnetization (A/m)'' or ``Magnetization 
+\{A[m(1)]\}'', not just ``A/m''. Do not label axes with a ratio of 
+quantities and units. For example, write ``Temperature (K)'', not 
+``Temperature/K''.
+
+\section*{Acknowledgment}
+
+The preferred spelling of the word ``acknowledgment'' in America is without 
+an ``e'' after the ``g''. Avoid the stilted expression ``one of us (R. B. 
+G.) thanks $\ldots$''. Instead, try ``R. B. G. thanks$\ldots$''. Put sponsor 
+acknowledgments in the unnumbered footnote on the first page.
+
+
+\bibliographystyle{IEEEtran} 
+\bibliography{references}
+
+
+\end{document}
