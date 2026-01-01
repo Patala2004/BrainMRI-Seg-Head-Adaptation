@@ -159,8 +159,31 @@ A.~Khorasani, ``Enhanced glioma semantic segmentation using u-net and
 
 \bibitem{Mso2021Kagg}
 \BIBentryALTinterwordspacing
-{Msoud Nickparvar}, ``Brain tumor mri dataset,'' 2021. [Online]. Available:
+M.~Nickparvar, ``Brain tumor mri dataset,'' 2021. [Online]. Available:
   \url{https://www.kaggle.com/dsv/2645886}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Indra2025Kagg}
+\BIBentryALTinterwordspacing
+I.~K and R.~M, ``Brain tumor dataset: Segmentation and classification,'' 2025.
+  [Online]. Available: \url{https://www.kaggle.com/dsv/11957028}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Wang2024}
+\BIBentryALTinterwordspacing
+T.-W. Wang, J.-S. Hong, W.-K. Lee, Y.-H. Lin, H.-C. Yang, C.-C. Lee, H.-C.
+  Chen, H.-M. Wu, W.~C. You, and Y.-T. Wu, ``Performance of convolutional
+  neural network models in meningioma segmentation in magnetic resonance
+  imaging: A systematic review and meta-analysis,'' \emph{Neuroinformatics},
+  vol.~23, no.~1, Dec. 2024. [Online]. Available:
+  \url{http://dx.doi.org/10.1007/s12021-024-09704-3}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Ron2015UNet}
+\BIBentryALTinterwordspacing
+O.~Ronneberger, P.~Fischer, and T.~Brox, ``U-net: Convolutional networks for
+  biomedical image segmentation,'' 2015. [Online]. Available:
+  \url{https://arxiv.org/abs/1505.04597}
 \BIBentrySTDinterwordspacing
 
 \end{thebibliography}
