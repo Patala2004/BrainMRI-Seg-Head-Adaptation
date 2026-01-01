@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex paper"] 1767233129.48169 "paper.aux" "paper.bbl" "paper" 1767233247.12964 0
-  "./references.bib" 1767228731 11719 1ed64404ff98c19efae679246b4954b8 ""
+["bibtex paper"] 1767259102.20315 "paper.aux" "paper.bbl" "paper" 1767259412.83205 0
+  "./references.bib" 1767252892 12294 ee9e505d263967a3d64ecf92366fab0e ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/bibtex/bst/ieeetran/IEEEtran.bst" 1440622569 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "paper.aux" 1767233246 3235 fb40d3fdf0ad3204b580eb3090d7869d "pdflatex"
+  "paper.aux" 1767259412 3804 3a3bf9d4b8e326925d3645bd85234ced "pdflatex"
   (generated)
   "paper.bbl"
   "paper.blg"
   (rewritten before read)
-["pdflatex"] 1767233245.41384 "c:/Users/Chris/Desktop/pattern/paper/paper.tex" "paper.pdf" "paper" 1767233247.13026 0
-  "C:/Users/Chris/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1767204154 82507 a9eef8696c92627b87e9975edea03b2a ""
+["pdflatex"] 1767259411.6948 "c:/Users/Chris/Desktop/pattern/paper/paper.tex" "paper.pdf" "paper" 1767259412.83341 0
+  "C:/Users/Chris/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1767250592 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/Chris/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1766687935 24225047 b144637f687dfaeb1006f6b89086355f ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/times/ptmb7t.tfm" 1136743454 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -42,6 +42,9 @@
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmsy6.tfm" 1136765053 1116 933a60c408fc0a863a92debe84b2d294 ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmsy8.tfm" 1136765053 1120 8b7d695260f3cff42e636090a8002094 ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmsy9.tfm" 1136765053 1116 25a7bf822c58caf309a702ef79f4afbb ""
+  "C:/Users/Chris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1247596667 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "C:/Users/Chris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
+  "C:/Users/Chris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1247596666 32716 08e384dc442464e7285e891af9f45947 ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb" 1136824548 44729 fea0975e20ec51c992338362f05f1146 ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb" 1136824548 44656 0cbca70e0534538582128f6b54593cca ""
@@ -71,6 +74,7 @@
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty" 1686931788 2444 0d0c1ee65478277e8015d65b86983da2 ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/tex/latex/base/ifthen.sty" 1705273578 5319 2b738d02ce36ada6dcdd9534940db0ee ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/tex/latex/base/textcomp.sty" 1705273578 2894 fc64867f9d198785eabe71a88276a9cb ""
+  "C:/Users/Chris/AppData/Local/Programs/MiKTeX/tex/latex/capt-of/capt-of.sty" 1264504665 1344 063f8536a047a2d9cb1803321f793f37 ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/tex/latex/cite/cite.sty" 1425353482 26218 19edeff8cdc2bcb704e8051dc55eb5a7 ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1623003186 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg" 1465894292 1213 620bba36b25224fa9b7e1ccb4ecb76fd ""
@@ -88,12 +92,14 @@
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/ot1ptm.fd" 1585253778 1007 15056f4a61917ceed3a44e4ac11fcc52 ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "IEEEtran.cls" 1766688173 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "c:/Users/Chris/Desktop/pattern/paper/paper.tex" 1767233244 19654 fc541c0503002fd5c5e25c0307d13ae7 ""
+  "c:/Users/Chris/Desktop/pattern/paper/paper.tex" 1767259411 25885 cf36c7ab26424a7dea84f2787f5d222b ""
   "images/architecture.pdf" 1767204428 87344 bf64a619ce01ceb2576a8ba5fa0a0eea ""
   "images/classification_confusion_matrix.png" 1767199850 98373 b18f7b136758a4048cd5417182bc6f16 ""
-  "paper.aux" 1767233246 3235 fb40d3fdf0ad3204b580eb3090d7869d "pdflatex"
-  "paper.bbl" 1767233129 8518 4e383a6e22789e2709ba969f985c76d9 "bibtex paper"
-  "paper.tex" 1767233244 19654 fc541c0503002fd5c5e25c0307d13ae7 ""
+  "images/segmentation_examples_1.png" 1767251298 56793 a01cd9e9a5fad905d1854af5c968180c ""
+  "images/segmentation_examples_2.png" 1767251840 64741 5f493ec853473017f8c212dda9bc007b ""
+  "paper.aux" 1767259412 3804 3a3bf9d4b8e326925d3645bd85234ced "pdflatex"
+  "paper.bbl" 1767259102 8891 d614d95b2edc8ed71b0ec8ce9ae3d7c2 "bibtex paper"
+  "paper.tex" 1767259411 25885 cf36c7ab26424a7dea84f2787f5d222b ""
   (generated)
   "paper.aux"
   "paper.log"

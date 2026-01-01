@@ -186,4 +186,12 @@ O.~Ronneberger, P.~Fischer, and T.~Brox, ``U-net: Convolutional networks for
   \url{https://arxiv.org/abs/1505.04597}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Pourmahboubi2025}
+\BIBentryALTinterwordspacing
+A.~Pourmahboubi, N.~Arsalani~Saeed, and H.~Tabrizchi, ``A brain tumor
+  segmentation enhancement in mri images using u-net and transfer learning,''
+  \emph{BMC Medical Imaging}, vol.~25, no.~1, Jul. 2025. [Online]. Available:
+  \url{http://dx.doi.org/10.1186/s12880-025-01837-4}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}
