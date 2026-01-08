@@ -189,12 +189,12 @@ We evaluated our model using total Dice score and Dice score per class. The prop
     \end{tabular}
 \end{table}
 
-Fig. \ref{seg:examples} compares predicted segmentation masks of our model with the real masks for two tumor images. The first image is the MRI scan of the brain. The second image corresponds to the real, handmade segmentation mask and the third image is our model's predicted mask. On the line bellow correct vs. incorrect pixels are shown, red pixels meaning incorrectly predicted pixels and green pixels meaning correctly predicted pixels. The first image is a general overview of correct vs incorrect for the whole mask. The second image only does this comparision on tumor pixels and the third image on background pixels. Here it is shown that our model, although failing to make completly accurate segmentation masks, is able to generally detect the area, shape and size of the tumor with great accuracy even for different types of MRI scans. A completly accurate segmentation mask was already not expected, as the dataset masks are handmade rough shapes and not completly pixel accurate.
+Fig. \ref{seg:examples} compares predicted segmentation masks of our model with the real masks for two tumor images. The first image is the MRI scan of the brain. The second image corresponds to the real, handmade segmentation mask and the third image is our model's predicted mask. Then, correct vs. incorrect pixels are shown, with salmon-orange pixels meaning incorrectly predicted pixels and teal colored pixels meaning correctly predicted pixels. The fourth image is a general overview of correct vs incorrect for the whole mask. The fifth image only does this comparision on tumor pixels and the sixth image on background pixels, leaving the rest of the pixels as black background pixels. Here it is shown that our model, although failing to make completly accurate segmentation masks, is able to generally detect the area, shape and size of the tumor with great accuracy even for different types of MRI scans. A completly accurate segmentation mask was already not expected, as the dataset masks are handmade rough shapes and not completly pixel accurate.
 
 \begin{figure*}
-    \includegraphics[width=\linewidth]{images/segmentation_examples_1.png}
-    \vline
-    \includegraphics[width=\linewidth]{images/segmentation_examples_2.png}
+    \includegraphics[width=\linewidth]{images/segmentation_examples.png}
+    % \vline
+    % \includegraphics[width=\linewidth]{images/segmentation_examples_2.png}
     \caption{Examples of our models segmentation masks with correct vs. incorrect pixel comparision.}
     \label{seg:examples}
 \end{figure*}

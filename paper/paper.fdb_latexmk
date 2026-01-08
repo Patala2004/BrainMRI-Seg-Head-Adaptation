@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex paper"] 1767259102.20315 "paper.aux" "paper.bbl" "paper" 1767880924.77105 0
+["bibtex paper"] 1767886739.07665 "paper.aux" "paper.bbl" "paper" 1767886740.32683 0
   "./references.bib" 1767252892 12294 ee9e505d263967a3d64ecf92366fab0e ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/bibtex/bst/ieeetran/IEEEtran.bst" 1440622569 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "paper.aux" 1767880923 3804 3a3bf9d4b8e326925d3645bd85234ced "pdflatex"
+  "paper.aux" 1767886739 3804 7f649c45c8e504c7254dc88d753da208 "pdflatex"
   (generated)
   "paper.bbl"
   "paper.blg"
   (rewritten before read)
-["pdflatex"] 1767880923.15606 "c:/Users/Chris/Desktop/pattern/paper/paper.tex" "paper.pdf" "paper" 1767880924.772 0
+["pdflatex"] 1767886739.27234 "c:/Users/Chris/Desktop/pattern/paper/paper.tex" "paper.pdf" "paper" 1767886740.32723 0
   "C:/Users/Chris/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1767250592 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/Chris/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1766687935 24225047 b144637f687dfaeb1006f6b89086355f ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -92,14 +92,13 @@
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/ot1ptm.fd" 1585253778 1007 15056f4a61917ceed3a44e4ac11fcc52 ""
   "C:/Users/Chris/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "IEEEtran.cls" 1766688173 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "c:/Users/Chris/Desktop/pattern/paper/paper.tex" 1767880922 25910 b8394f1167f27e49b712418b9bf2e6b4 ""
+  "c:/Users/Chris/Desktop/pattern/paper/paper.tex" 1767886737 25980 d6b24519f8025bb5e0e72e21879de213 ""
   "images/architecture.pdf" 1767204428 87344 bf64a619ce01ceb2576a8ba5fa0a0eea ""
   "images/classification_confusion_matrix.png" 1767199850 98373 b18f7b136758a4048cd5417182bc6f16 ""
-  "images/segmentation_examples_1.png" 1767251298 56793 a01cd9e9a5fad905d1854af5c968180c ""
-  "images/segmentation_examples_2.png" 1767251840 64741 5f493ec853473017f8c212dda9bc007b ""
-  "paper.aux" 1767880923 3804 3a3bf9d4b8e326925d3645bd85234ced "pdflatex"
-  "paper.bbl" 1767259102 8891 d614d95b2edc8ed71b0ec8ce9ae3d7c2 "bibtex paper"
-  "paper.tex" 1767880922 25910 b8394f1167f27e49b712418b9bf2e6b4 ""
+  "images/segmentation_examples.png" 1767886539 512416 ac2712768aa08fa7d79a737194fad09f ""
+  "paper.aux" 1767886739 3804 7f649c45c8e504c7254dc88d753da208 "pdflatex"
+  "paper.bbl" 1767886739 8891 d614d95b2edc8ed71b0ec8ce9ae3d7c2 "bibtex paper"
+  "paper.tex" 1767886737 25980 d6b24519f8025bb5e0e72e21879de213 ""
   (generated)
   "paper.aux"
   "paper.log"
